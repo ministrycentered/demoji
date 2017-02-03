@@ -13,10 +13,10 @@ module Demoji
 
   private
 
-    def create_or_update_with_utf8_rescue
+    def create_or_update_with_utf8_rescue(*args)
       _rescued_counter ||= 0
 
-      create_or_update_without_utf8_rescue
+      create_or_update_without_utf8_rescue(*args)
     rescue ActiveRecord::StatementInvalid => ex
       raise ex unless ex.message.match /Mysql2::Error: Incorrect string value:/
 
