@@ -8,7 +8,8 @@ module Demoji
   extend ActiveSupport::Concern
 
   included do
-    alias_method_chain :create_or_update, :utf8_rescue
+    alias_method :create_or_update_without_utf8_rescue, :create_or_update
+    alias_method :create_or_update, :create_or_update_with_utf8_rescue
   end
 
   private
